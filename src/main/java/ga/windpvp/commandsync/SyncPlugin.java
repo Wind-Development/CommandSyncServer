@@ -8,7 +8,7 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 
-@Plugin(id = "commandsync", name = "Command Sync", version = "0.0.1-SNAPSHOT", description = "Make the Velocity proxy run commands based on backend input!", authors = {
+@Plugin(id = "commandsyncserver", name = "Command Sync Server", version = "0.0.1-SNAPSHOT", description = "Make the Velocity proxy run commands based on backend input!", authors = {
 		"windcolor-dev" })
 public class SyncPlugin {
 
