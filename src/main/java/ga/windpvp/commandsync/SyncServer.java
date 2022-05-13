@@ -19,7 +19,7 @@ public class SyncServer {
 	private ServerSocket serverSocket;
 
 	protected void runServer() {
-		// Runnable for the statistics server
+		// Runnable for the server
 		Runnable commandServerTask = (() -> {
 			try {
 				run();

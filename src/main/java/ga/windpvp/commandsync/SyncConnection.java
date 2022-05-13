@@ -73,7 +73,7 @@ public class SyncConnection {
 		// Deregister
 		SyncServer.connectionList.remove(this);
 
-		// Prevent statistic from decrementing twice
+		// Prevent connection from closing twice
 		hasUnregistered = true;
 	}
 
