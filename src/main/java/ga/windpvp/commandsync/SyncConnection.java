@@ -133,6 +133,7 @@ public class SyncConnection {
 
 						server.getCommandManager().executeAsync(server.getConsoleCommandSource(), processCommand);
 
+						SyncPlugin.getInstance().getLogger().info("ran command " + processCommand);
 					}
 				}
 			} catch (IOException e) {
