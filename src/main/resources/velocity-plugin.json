@@ -1,0 +1,1 @@
+{"id":"commandsyncserver","name":"Command Sync Server","version":"0.0.1","description":"Make the Velocity proxy run commands based on backend input!","authors":["windcolor-dev"],"main":"ga.windpvp.commandsync.SyncPlugin"}
