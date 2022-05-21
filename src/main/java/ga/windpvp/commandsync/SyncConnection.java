@@ -117,7 +117,7 @@ public class SyncConnection {
 
 					} else if (clientInput.toLowerCase().contains("name ")) {
 
-						String finalName = clientInput.toLowerCase().replace("name ", null);
+						String finalName = clientInput.toLowerCase().replace("name ", "");
 						SyncConnection.this.connectionName = finalName;
 
 					} else if (clientInput.equalsIgnoreCase("keep alive packet")) {
@@ -126,7 +126,7 @@ public class SyncConnection {
 
 					} else if (clientInput.toLowerCase().contains("run command ")) {
 
-						String processCommand = clientInput.toLowerCase().replace("run command ", null);
+						String processCommand = clientInput.toLowerCase().replace("run command ", "");
 						ProxyServer server = SyncPlugin.getInstance().getServer();
 
 						server.getCommandManager().executeAsync(server.getConsoleCommandSource(), processCommand);
