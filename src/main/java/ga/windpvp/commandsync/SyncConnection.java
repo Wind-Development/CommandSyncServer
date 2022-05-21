@@ -128,6 +128,8 @@ public class SyncConnection {
 
 						String processCommand = clientInput.toLowerCase().replace("run command ", "");
 						ProxyServer server = SyncPlugin.getInstance().getServer();
+						
+						SyncPlugin.getInstance().getLogger().info("received command " + processCommand);
 
 						server.getCommandManager().executeAsync(server.getConsoleCommandSource(), processCommand);
 
