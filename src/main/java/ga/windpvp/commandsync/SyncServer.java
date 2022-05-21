@@ -34,7 +34,7 @@ public class SyncServer {
 	}
 
 	private void run() throws IOException {
-		serverSocket = new ServerSocket(500);
+		serverSocket = new ServerSocket(1500);
 
 		// Handle new connections on its own thread so the server can process multiple
 		// clients
