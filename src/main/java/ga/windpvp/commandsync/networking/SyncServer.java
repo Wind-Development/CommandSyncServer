@@ -1,4 +1,4 @@
-package ga.windpvp.commandsync;
+package ga.windpvp.commandsync.networking;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -18,7 +18,7 @@ public class SyncServer {
 	 */
 	private ServerSocket serverSocket;
 
-	protected void runServer() {
+	public void runServer() {
 		// Runnable for the server
 		Runnable commandServerTask = (() -> {
 			try {

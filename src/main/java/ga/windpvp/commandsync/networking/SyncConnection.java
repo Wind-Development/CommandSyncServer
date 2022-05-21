@@ -1,4 +1,4 @@
-package ga.windpvp.commandsync;
+package ga.windpvp.commandsync.networking;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +10,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import com.velocitypowered.api.proxy.ProxyServer;
+
+import ga.windpvp.commandsync.SyncPlugin;
 
 public class SyncConnection {
 
