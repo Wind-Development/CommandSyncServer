@@ -14,10 +14,11 @@ Remember to setup a firewall for port 1500 so that only backend servers can sign
 
 - Install this plugin on your Velocity instance.
 - Install [Command Sync Client](https://github.com/Wind-Development/CommandSyncClient) on your backend server(s).
+- Configure the Command Sync Client backend server name
 - Setup is now complete! 
 
 ## Usage
 
-- Running "/sync ban windcolor", will ban the player windcolor (with a proper punishments plugin).
+- Running "/sync ban windcolor" on the backend server will ban the player windcolor (with a proper punishments plugin).
 - This works with all sorts of commands and supports unlimited command lengths.
 
