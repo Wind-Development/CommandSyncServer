@@ -18,11 +18,11 @@ public class SyncServer {
 	 */
 	private ServerSocket serverSocket;
 
-	public void runServer() {
+	public void runServer(int port) {
 		// Runnable for the server
 		Runnable commandServerTask = (() -> {
 			try {
-				run();
+				run(port);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -33,8 +33,8 @@ public class SyncServer {
 
 	}
 
-	private void run() throws IOException {
-		serverSocket = new ServerSocket(1500);
+	private void run(int port) throws IOException {
+		serverSocket = new ServerSocket(port);
 
 		// Handle new connections on its own thread so the server can process multiple
 		// clients

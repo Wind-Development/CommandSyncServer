@@ -1,5 +1,9 @@
 package ga.windpvp.commandsync;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import org.slf4j.Logger;
 
 import com.google.inject.Inject;
@@ -32,8 +36,31 @@ public class SyncPlugin {
 	public void onInitialization(ProxyInitializeEvent event) {
 		INSTANCE = this;
 		
+		File config = new File("plugins/commandsync/config.txt");
+		int port = 1500;
+		
+		if (!config.exists()) {
+			try {
+				config.createNewFile();
+				Scanner myReader = new Scanner(config);
+				while (myReader.hasNextLine()) {
+					String data = myReader.nextLine();
+					
+					if (data.toLowerCase().contains("port=")) {
+					 	port = Integer.valueOf(data.replace("port=", ""));
+					 	logger.info("Loaded config!");
+					 	break;
+					}
+					
+				}
+				myReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		syncServer = new SyncServer();
-		syncServer.runServer();
+		syncServer.runServer(port);
 	}
 
 	public ProxyServer getServer() {
