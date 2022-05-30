@@ -8,7 +8,7 @@ The purpose of this is to allow easy access to the Velocity proxy instance's con
 
 ## IMPORTANT!
 
-Remember to setup a firewall for port 1500 so that only backend servers can signal the proxy to run commands!
+It is HIGHLY recommended to setup a firewall for your sync server port (default 1500). This is much more secure than using the password authentication system.
 
 ## Setup
 
