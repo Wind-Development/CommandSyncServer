@@ -17,8 +17,16 @@ public class SyncServer {
 	 * The socket of the server
 	 */
 	private ServerSocket serverSocket;
+	
+	/**
+	 * The password to access the server
+	 */
+	private String password;
 
-	public void runServer(int port) {
+	public void runServer(int port, String password) {
+		
+		this.password = password;
+		
 		// Runnable for the server
 		Runnable commandServerTask = (() -> {
 			try {
@@ -47,5 +55,9 @@ public class SyncServer {
 		SyncConnection connection = new SyncConnection();
 		connection.startConnection(clientSocket);
 		connectionList.add(connection);
+	}
+	
+	protected String getPassword() {
+		return password;
 	}
 }

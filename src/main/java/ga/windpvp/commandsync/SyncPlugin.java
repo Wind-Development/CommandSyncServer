@@ -39,6 +39,7 @@ public class SyncPlugin {
 		
 		File config = new File("plugins/commandsync/config.txt");
 		int port = 1500;
+		String password = "defaultPassword";
 		
 		if (!config.exists()) {
 			try {
@@ -50,27 +51,38 @@ public class SyncPlugin {
 				FileWriter writer = new FileWriter(config);
 				
 				writer.write("port=1500");
+				writer.write("password=defaultPassword");
 				writer.close();
 				
 				Scanner reader = new Scanner(config);
 				while (reader.hasNextLine()) {
 					String data = reader.nextLine();
 					
+					// Port
 					if (data.toLowerCase().contains("port=")) {
 					 	port = Integer.valueOf(data.replace("port=", ""));
-					 	logger.info("Loaded config!");
-					 	break;
+					}
+					
+					// Password
+					if (data.toLowerCase().contains("password=")) {
+						password = data.replace("password=", "");
 					}
 					
 				}
+			 	logger.info("Loaded config!");
+
 				reader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
+		if (password.equals("defaultPassword")) {
+			logger.warn("The command sync server is running with the default password, it is recommended to use a custom one");
+		}
+		
 		syncServer = new SyncServer();
-		syncServer.runServer(port);
+		syncServer.runServer(port, password);
 	}
 
 	public ProxyServer getServer() {
@@ -79,6 +91,10 @@ public class SyncPlugin {
 
 	public Logger getLogger() {
 		return logger;
+	}
+	
+	public SyncServer getSyncServer() {
+		return syncServer;
 	}
 
 	public static SyncPlugin getInstance() {

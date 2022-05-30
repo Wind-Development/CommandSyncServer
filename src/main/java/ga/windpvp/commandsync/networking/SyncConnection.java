@@ -102,11 +102,26 @@ public class SyncConnection {
 
 				// Handle client messages
 				String clientInput;
-
+				boolean hasAuthorized = false;
+				
 				while (true) {
 
 					clientInput = in.readLine();
 
+					if (!hasAuthorized) {
+						if (clientInput.contains("password ")) {
+							String password = clientInput.replace("password ", "");
+							if (!password.equals(SyncPlugin.getInstance().getSyncServer().getPassword())) {
+								closeConnection();
+								break;
+							} else {
+								SyncPlugin.getInstance().getLogger().info("Successfully authorized a connection");
+								hasAuthorized = true;
+							}
+						}
+						continue;
+					}
+					
 					// Exit connection if keep alive has expired
 					if (hasUnregistered) {
 						break;
@@ -136,7 +151,7 @@ public class SyncConnection {
 						server.getCommandManager().executeAsync(server.getConsoleCommandSource(), processCommand);
 
 						SyncPlugin.getInstance().getLogger().info("ran command " + processCommand);
-					}
+					} 
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
