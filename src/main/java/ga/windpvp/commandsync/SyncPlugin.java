@@ -1,6 +1,7 @@
 package ga.windpvp.commandsync;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -41,10 +42,19 @@ public class SyncPlugin {
 		
 		if (!config.exists()) {
 			try {
+				if (!config.getParentFile().exists()) {
+					config.getParentFile().mkdirs();
+				}
 				config.createNewFile();
-				Scanner myReader = new Scanner(config);
-				while (myReader.hasNextLine()) {
-					String data = myReader.nextLine();
+				
+				FileWriter writer = new FileWriter(config);
+				
+				writer.write("port=1500");
+				writer.close();
+				
+				Scanner reader = new Scanner(config);
+				while (reader.hasNextLine()) {
+					String data = reader.nextLine();
 					
 					if (data.toLowerCase().contains("port=")) {
 					 	port = Integer.valueOf(data.replace("port=", ""));
@@ -53,7 +63,7 @@ public class SyncPlugin {
 					}
 					
 				}
-				myReader.close();
+				reader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
